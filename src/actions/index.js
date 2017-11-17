@@ -8,7 +8,8 @@ export const GET_CONTRACTORS = "GET_CONTRACTORS";
 
 export const GET_ORGANIZATION = "GET_ORGANIZATION";
 
-const ROOT_URL = "http://localhost:57469/api";
+//const ROOT_URL = "http://localhost:57469/api";
+const ROOT_URL = "http://privateer.azurewebsites.net/api";
 
 export function register(values, callback) {
   const request = axios
