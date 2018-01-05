@@ -9,8 +9,11 @@ import reducers from './reducers';
 import Register from './components/register';
 import Login from './components/login';
 import Organization from './components/organization';
+import UpdateOrganization from './components/updateOrganization';
+import Home from './components/home';
+import RegisterOrganizationWithStripe from './components/organization_stripe';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
@@ -18,8 +21,11 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route path="/login" component={Login} />
+          <Route path="/organization/update" component={UpdateOrganization} />
+          <Route path="/organization/stripe" component={RegisterOrganizationWithStripe} />
           <Route path="/organization" component={Organization} />
-          <Route path="/" component={Register} />
+          <Route path="/register" component={Register} />
+          <Route path="/" component={Home} />
         </Switch>
       </div>
     </BrowserRouter>

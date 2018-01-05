@@ -43,7 +43,6 @@ class Register extends Component {
   }
 
   onSubmit(values) {
-    console.log(values);
     this.props.register(values, () => {
       this.props.history.push('/');
     });
@@ -52,12 +51,12 @@ class Register extends Component {
 
 function validate(values) {
   const errors = {};
-  if(!values.emailAddress) {
-    errors.emailAddress = "Email Address must be entered";
+  if(!values.email) {
+    errors.email = "Email Address must be entered";
   }
 }
 
 export default reduxForm({
   validate,
-  form: "RegiserForm"
+  form: "RegisterForm"
 })(connect(null, { register })(Register));

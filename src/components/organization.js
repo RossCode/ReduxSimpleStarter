@@ -1,7 +1,9 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import { getContractors, getOrganization } from "../actions";
+import AddContractor  from './addContractor';
 
 
 class Organization extends Component {
@@ -11,12 +13,15 @@ class Organization extends Component {
   }
 
   renderContractors() {
-    if (!this.props.contractor) {
+    const { contractors } = this.props;
+
+    if (!contractors) {
       return <div>None</div>;
     }
-    return _.map(this.props.contractors, contractor => {
+
+    return _.map(contractors, contractor => {
       return (
-        <li className="list-group-item" key={contractor.id}>
+        <li className="list-group-item" key={contractor.ContractorId}>
           {contractor.FirstName} {contractor.LastName}
         </li>
       );
@@ -26,7 +31,6 @@ class Organization extends Component {
   render() {
     const { organization } = this.props;
 
-    console.log(this.props);
     if (!organization) {
       return (
         <div> Loading...</div>
@@ -40,6 +44,9 @@ class Organization extends Component {
         <ul className="list-group">
           {this.renderContractors()}
         </ul>
+        <Link to="/organization/update">Update Organization</Link>
+        <Link to="/organization/stripe">Register Organization with Stripe</Link>
+        <AddContractor />
       </div>
     );
   }

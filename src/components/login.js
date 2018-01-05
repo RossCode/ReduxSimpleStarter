@@ -28,7 +28,6 @@ class Login extends Component {
 
   onSubmit(values) {
     this.props.login(values, (result) => {
-      console.log(result);
       localStorage.setItem('token', result.data.access_token);
       this.props.history.push('/organization');
     });
